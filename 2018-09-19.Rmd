@@ -1,0 +1,67 @@
+---
+title: "2018-09-19"
+output: html_notebook
+---
+
+```{R}
+a<-5
+a2<-5L
+aVector<-c(5,6,7)
+a2Vector<-c(5L,6L,7L)
+```
+
+```{R}
+a<-3
+```
+
+```{R}
+num1<-1
+num2<-100
+num1+num2
+```
+
+```{R}
+avector-a
+```
+
+```{R}
+num1<-1.568
+num2<-2.121
+round(num1,digits = 2) -> roundNum1
+```
+
+```{R}
+b<-"你好"
+bvector<-c ("你好","How are you?")
+b2<-'你好'
+```
+
+```{R}
+b3<-"'你好'"
+b4<-'"你好"'
+```
+
+```{R}
+
+```
+
+## 2nd class
+```{R}
+```
+
+```{R}
+library(readr)
+student <- read_csv("https://raw.githubusercontent.com/tpemartin/course-107-1-programming-for-data-science/master/data/student.csv")
+library(dplyr)
+library(magrittr)
+student %<>% mutate(
+  身高級距=cut(身高,c(0,150,155,160,165,170,175,180,185,200)))
+```
+
+```{R}
+student出生地
+```
+
+```{R}
+as.factor(student出生地)
+```

@@ -1,0 +1,18 @@
+"0","library(readr)"
+"0","student <- read_csv(""https://raw.githubusercontent.com/tpemartin/course-107-1-programming-for-data-science/master/data/student.csv"")"
+"2","Parsed with column specification:
+cols(
+  `<U+5165><U+5B78><U+5E74>` = col_character(),
+  `<U+51FA><U+751F><U+5730>` = col_character(),
+  `<U+6027><U+5225>` = col_character(),
+  `<U+8EAB><U+9AD8>` = col_double()
+)
+"
+"0","library(dplyr)"
+"0","library(magrittr)"
+"0","student %<>% mutate("
+"0","  身高級距=cut(身高,c(0,150,155,160,165,170,175,180,185,200)))"
+"2","Error: unexpected input in:
+""student %<>% mutate(
+  \""
+"
