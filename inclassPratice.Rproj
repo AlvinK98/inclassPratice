@@ -1,13 +1,32 @@
-Version: 1.0
+---
+title: "Untitled"
+output: html_document
+---
 
-RestoreWorkspace: Default
-SaveWorkspace: Default
-AlwaysSaveHistory: Default
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-EnableCodeIndexing: Yes
-UseSpacesForTab: Yes
-NumSpacesForTab: 2
-Encoding: UTF-8
+```{r}
+library(lubridate)
+a <- seq(ymd("2001-01-01"),ymd("2018-09-01"),by="month")
+b <- seq(ymd("2001-01-01"),ymd("2018-09-01"),by="quarter")
+c <- seq(ymd("2001-01-01"),ymd("2018-09-01"),by="year")
+```
 
-RnwWeave: Sweave
-LaTeX: pdfLaTeX
+```{r}
+library(readr)
+studentID <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/studentID.csv")
+```
+
+```{r}
+library(stringr)
+str_sub(studentID$學號,5,7)
+```
+
+```{r}
+fruits <- c(
+  "apples and oranges and pears and bananas",
+  "pineapples and mangos and guavas")
+str_split_fixed(fruits,"and",3)
+str_split_fixed(fruits,"and",4)

@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1537954257850.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1641375389",
+    "id" : "3A6F65AA",
+    "lastKnownWriteTime" : 1537954311,
+    "last_content_update" : 1537954311889,
+    "path" : "C:/R Studio/inclassPratice/inclassPratice.Rproj",
+    "project_path" : "inclassPratice.Rproj",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "1,18",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "text"
+}
