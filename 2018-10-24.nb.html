@@ -180,6 +180,11 @@ $(document).ready(function () {
 <h2>Set up libraries</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShsdWJyaWRhdGUpXG5saWJyYXJ5KHN0cmluZ3IpXG5saWJyYXJ5KGdvb2dsZXNoZWV0cylcbmBgYCJ9 -->
+<pre class="r"><code>library(lubridate)
+library(stringr)
+library(googlesheets)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -187,57 +192,266 @@ $(document).ready(function () {
 <h2>Import Google</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuKFN0dURGJHNjb3JlID49IDgwKVxuKFN0dURGJG5hbWU9PVwi5bCP5pawXCIpXG5gYGAifQ== -->
-<pre class="r"><code>(StuDF$score &gt;= 80)
-(StuDF$name==&quot;小新&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ3NfYXV0aChuZXdfdXNlciA9IFRSVUUpXG5gYGAifQ== -->
+<pre class="r"><code>gs_auth(new_user = TRUE)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZbMSwyXVxuU3R1REZbLDJdXG5TdHVERlsxLF1cblN0dURGW2MoMSw0KSxdXG5TdHVERltjKDEsNCksYygyLDMpXVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ3NTdXJ2ZXk8LWdzX2tleShcIjFtQzlibnhqMTFOQ05vT0N3MFZtbjRueEVSYkh0TGplR285djlDOWIyR0RFXCIpICAjZG93bmxvYWQgc2hlZXQgaW5mb3JtYXRpb24gYXMgYW4gb2JqZWN0XG5jbGFzc1N1cnZleTwtZ3NfcmVhZChnc1N1cnZleSx3cz0xKSAjYWNjZXNzIHRoZSAxc3Qgd29ya3NoZWV0XG5gYGAifQ== -->
+<pre class="r"><code>gsSurvey&lt;-gs_key(&quot;1mC9bnxj11NCNoOCw0Vmn4nxERbHtLjeGo9v9C9b2GDE&quot;)  #download sheet information as an object
+classSurvey&lt;-gs_read(gsSurvey,ws=1) #access the 1st worksheet</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3MoY2xhc3NTdXJ2ZXkpXG5gYGAifQ== -->
+<pre class="r"><code>class(classSurvey)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REYgPC0gZGF0YS5mcmFtZShcbiAgU3R1SUQ9YygxLDIsMyw0LDUpLFxuICBuYW1lPWMoXCLlsI/mmI5cIixcIuWkp+mbhFwiLFwi6IOW6JmOXCIsXCLlsI/mlrBcIixcIuWkp+eZvVwiKSxcbiAgc2NvcmU9Yyg4MCw2MCw5MCw3MCw1MClcbiAgKVxuU3R1REYgXG5gYGAifQ== -->
+<pre class="r"><code>StuDF &lt;- data.frame(
+  StuID=c(1,2,3,4,5),
+  name=c(&quot;小明&quot;,&quot;大雄&quot;,&quot;胖虎&quot;,&quot;小新&quot;,&quot;大白&quot;),
+  score=c(80,60,90,70,50)
+  )
+StuDF </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXMuY2hhcmFjdGVyKFN0dURGJG5hbWUpIC0+IFN0dURGJG5hbWVcbmBgYCJ9 -->
+<pre class="r"><code>as.character(StuDF$name) -&gt; StuDF$name</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REYgPC0gZGF0YS5mcmFtZShcbiAgU3R1SUQ9YygxLDIsMyw0LDUpLFxuICBuYW1lPWMoXCLlsI/mmI5cIixcIuWkp+mbhFwiLFwi6IOW6JmOXCIsXCLlsI/mlrBcIixcIuWkp+eZvVwiKSxcbiAgc2NvcmU9Yyg4MCw2MCw5MCw3MCw1MCksXG4gIHN0cmluZ3NBc0ZhY3RvcnMgPSBGXG4gIClcblN0dURGIFxuYGBgIn0= -->
+<pre class="r"><code>StuDF &lt;- data.frame(
+  StuID=c(1,2,3,4,5),
+  name=c(&quot;小明&quot;,&quot;大雄&quot;,&quot;胖虎&quot;,&quot;小新&quot;,&quot;大白&quot;),
+  score=c(80,60,90,70,50),
+  stringsAsFactors = F
+  )
+StuDF </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmFtZXMoU3R1REYpIFxuY29sbmFtZXMoU3R1REYpXG5gYGAifQ== -->
+<pre class="r"><code>names(StuDF) 
+colnames(StuDF)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm93bmFtZXMoU3R1REYpXG5gYGAifQ== -->
+<pre class="r"><code>rownames(StuDF)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZcblN0dURGWzEsMl1cbmBgYCJ9 -->
+<pre class="r"><code>StuDF
+StuDF[1,2]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZbMSwyXVxuU3R1REZbLDJdXG5TdHVERlsxLF1cblN0dURGXG5TdHVERltjKDEsNCksXVxuU3R1REZbYygxLDQpLGMoMiwzKV1cbmBgYCJ9 -->
 <pre class="r"><code>StuDF[1,2]
 StuDF[,2]
 StuDF[1,]
+StuDF
 StuDF[c(1,4),]
 StuDF[c(1,4),c(2,3)]</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZbYygxLDIsMyksXVxuU3R1REZbYygxOjMpLF1cblN0dURGW2MoMTozLDUpLF1cbmBgYCJ9 -->
+<pre class="r"><code>StuDF[c(1,2,3),]
+StuDF[c(1:3),]
+StuDF[c(1:3,5),]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZbYygxLDQpLF1cbmBgYCJ9 -->
+<pre class="r"><code>StuDF[c(1,4),]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZbLWMoMSw0KSxdXG5gYGAifQ== -->
+<pre class="r"><code>StuDF[-c(1,4),]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVhZChjbGFzc1N1cnZleSwxMClcbmBgYCJ9 -->
+<pre class="r"><code>head(classSurvey,10)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZcbmBgYCJ9 -->
+<pre class="r"><code>StuDF</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZbMSwyXVxuYGBgIn0= -->
+<pre class="r"><code>StuDF[1,2]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZbYyhULEYsRixGLEYpLGMoRixULEYpXVxuYGBgIn0= -->
+<pre class="r"><code>StuDF[c(T,F,F,F,F),c(F,T,F)]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZbYygxLDQpLF1cblN0dURGW2MoVCxGLEYsVCxGKSxdXG5gYGAifQ== -->
+<pre class="r"><code>StuDF[c(1,4),]
+StuDF[c(T,F,F,T,F),]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYTwtYyhULFQsRixGLFQsRixGKVxuc3VtKGEpXG5gYGAifQ== -->
+<pre class="r"><code>a&lt;-c(T,T,F,F,T,F,F)
+sum(a)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZcbmBgYCJ9 -->
+<pre class="r"><code>StuDF</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuKFN0dURGJHNjb3JlID49IDgwKVxuKFN0dURGJG5hbWUgPT0gXCLlsI/mlrBcIilcbmBgYCJ9 -->
+<pre class="r"><code>(StuDF$score &gt;= 80)
+(StuDF$name == &quot;小新&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2hpY2goU3R1REYkc2NvcmU+PTgwKVxuYGBgIn0= -->
+<pre class="r"><code>which(StuDF$score&gt;=80)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZbd2hpY2goU3R1REYkc2NvcmU+PTgwKSwyXVxuU3R1REZbYygxLDMpLDJdXG5TdHVERlsoU3R1REYkc2NvcmU+PTgwKSwyXVxuU3R1REZbYyhULEYsVCxGLEYpLDJdXG5TdHVERlt3aGljaChTdHVERiRuYW1lID09IFwi5bCP5pawXCIpLDNdXG5gYGAifQ== -->
+<pre class="r"><code>StuDF[which(StuDF$score&gt;=80),2]
+StuDF[c(1,3),2]
+StuDF[(StuDF$score&gt;=80),2]
+StuDF[c(T,F,T,F,F),2]
+StuDF[which(StuDF$name == &quot;小新&quot;),3]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWEgPC0gKGNsYXNzU3VydmV5JOaAp+WIpSA9PSBcIueUt1wiIClcbmBgYCJ9 -->
+<pre class="r"><code>aa &lt;- (classSurvey$性別 == &quot;男&quot; )</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IHVuZXhwZWN0ZWQgaW5wdXQgaW4gXCJhYSA8LSAoY2xhc3NTdXJ2ZXkkXFxcIlxuIn0= -->
+<pre><code>Error: unexpected input in &quot;aa &lt;- (classSurvey$\&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuKGNsYXNzU3VydmV5JOaAp+WIpSA9PSBcIueUt1wifCBjbGFzc1N1cnZleSTmnKzlrbjmnJ/lrbjliIbmlbggPiAyNilcbmBgYCJ9 -->
+<pre class="r"><code>(classSurvey$性別 == &quot;男&quot;| classSurvey$本學期學分數 &gt; 26)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IHVuZXhwZWN0ZWQgaW5wdXQgaW4gXCIoY2xhc3NTdXJ2ZXkkXFxcIlxuIn0= -->
+<pre><code>Error: unexpected input in &quot;(classSurvey$\&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3NTdXJ2ZXlbXG4gIChjbGFzc1N1cnZleSTmgKfliKUgPT0gXCLnlLdcIiAmIGNsYXNzU3VydmV5JOacrOWtuOacn+WtuOWIhuaVuCA+IDI2KSwgM11cbmBgYCJ9 -->
+<pre class="r"><code>classSurvey[
+  (classSurvey$性別 == &quot;男&quot; &amp; classSurvey$本學期學分數 &gt; 26), 3]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWFhPC1jKDMsNyw5LDEwKVxuYWFhWzNdXG5gYGAifQ== -->
+<pre class="r"><code>aaa&lt;-c(3,7,9,10)
+aaa[3]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZcbmBgYCJ9 -->
+<pre class="r"><code>StuDF</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REYkU3R1SURcblN0dURGWyxjKFwiU3R1SURcIildXG5TdHVERiRuYW1lXG5TdHVERlssYyhcIm5hbWVcIildXG4gU3R1REZbLGMoXCJTdHVJRFwiLFwibmFtZVwiKV1cbiAjIyDnhKHms5XnlKgk5LiA5qyh5Y+W5YWp5YCL5YWD57SgXG4jIFN0dURGJGMoXCJTdHVJRFwiLFwibmFtZVwiKVxuYGBgIn0= -->
+<pre class="r"><code>StuDF$StuID
+StuDF[,c(&quot;StuID&quot;)]
+StuDF$name
+StuDF[,c(&quot;name&quot;)]
+ StuDF[,c(&quot;StuID&quot;,&quot;name&quot;)]
+ ## 無法用$一次取兩個元素
+# StuDF$c(&quot;StuID&quot;,&quot;name&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU3R1REZbLGMoMSwzKV1bYygxLDQpLF1cbmBgYCJ9 -->
+<pre class="r"><code>StuDF[,c(1,3)][c(1,4),]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTgtMTAtMjQiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQoNCiMjIFNldCB1cCBsaWJyYXJpZXMNCg0KYGBge3J9DQpsaWJyYXJ5KGx1YnJpZGF0ZSkNCmxpYnJhcnkoc3RyaW5ncikNCmxpYnJhcnkoZ29vZ2xlc2hlZXRzKQ0KYGBgDQoNCiMjIEltcG9ydCBHb29nbGUNCg0KYGBge3J9DQpnc19hdXRoKG5ld191c2VyID0gVFJVRSkNCmBgYA0KDQpgYGB7cn0NCmdzU3VydmV5PC1nc19rZXkoIjFtQzlibnhqMTFOQ05vT0N3MFZtbjRueEVSYkh0TGplR285djlDOWIyR0RFIikgICNkb3dubG9hZCBzaGVldCBpbmZvcm1hdGlvbiBhcyBhbiBvYmplY3QNCmNsYXNzU3VydmV5PC1nc19yZWFkKGdzU3VydmV5LHdzPTEpICNhY2Nlc3MgdGhlIDFzdCB3b3Jrc2hlZXQNCmBgYA0KDQpgYGB7cn0NCmNsYXNzKGNsYXNzU3VydmV5KQ0KYGBgDQoNCg0KYGBge3J9DQpTdHVERiA8LSBkYXRhLmZyYW1lKA0KICBTdHVJRD1jKDEsMiwzLDQsNSksDQogIG5hbWU9Yygi5bCP5piOIiwi5aSn6ZuEIiwi6IOW6JmOIiwi5bCP5pawIiwi5aSn55m9IiksDQogIHNjb3JlPWMoODAsNjAsOTAsNzAsNTApDQogICkNClN0dURGIA0KYGBgDQoNCmBgYHtyfQ0KYXMuY2hhcmFjdGVyKFN0dURGJG5hbWUpIC0+IFN0dURGJG5hbWUNCmBgYA0KDQpgYGB7cn0NClN0dURGIDwtIGRhdGEuZnJhbWUoDQogIFN0dUlEPWMoMSwyLDMsNCw1KSwNCiAgbmFtZT1jKCLlsI/mmI4iLCLlpKfpm4QiLCLog5bomY4iLCLlsI/mlrAiLCLlpKfnmb0iKSwNCiAgc2NvcmU9Yyg4MCw2MCw5MCw3MCw1MCksDQogIHN0cmluZ3NBc0ZhY3RvcnMgPSBGDQogICkNClN0dURGIA0KYGBgDQoNCmBgYHtyfQ0KbmFtZXMoU3R1REYpIA0KY29sbmFtZXMoU3R1REYpDQpgYGANCg0KYGBge3J9DQpyb3duYW1lcyhTdHVERikNCmBgYA0KDQpgYGB7cn0NCihTdHVERiRzY29yZSA+PSA4MCkNCihTdHVERiRuYW1lPT0i5bCP5pawIikNCmBgYA0KDQpgYGB7cn0NClN0dURGWzEsMl0NClN0dURGWywyXQ0KU3R1REZbMSxdDQpTdHVERltjKDEsNCksXQ0KU3R1REZbYygxLDQpLGMoMiwzKV0NCmBgYA==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTgtMTAtMjQiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIyBTZXQgdXAgbGlicmFyaWVzDQoNCmBgYHtyfQ0KbGlicmFyeShsdWJyaWRhdGUpDQpsaWJyYXJ5KHN0cmluZ3IpDQpsaWJyYXJ5KGdvb2dsZXNoZWV0cykNCmBgYA0KDQojIyBJbXBvcnQgR29vZ2xlDQoNCmBgYHtyfQ0KZ3NfYXV0aChuZXdfdXNlciA9IFRSVUUpDQpgYGANCg0KYGBge3J9DQpnc1N1cnZleTwtZ3Nfa2V5KCIxbUM5Ym54ajExTkNOb09DdzBWbW40bnhFUmJIdExqZUdvOXY5QzliMkdERSIpICAjZG93bmxvYWQgc2hlZXQgaW5mb3JtYXRpb24gYXMgYW4gb2JqZWN0DQpjbGFzc1N1cnZleTwtZ3NfcmVhZChnc1N1cnZleSx3cz0xKSAjYWNjZXNzIHRoZSAxc3Qgd29ya3NoZWV0DQpgYGANCg0KYGBge3J9DQpjbGFzcyhjbGFzc1N1cnZleSkNCmBgYA0KDQoNCmBgYHtyfQ0KU3R1REYgPC0gZGF0YS5mcmFtZSgNCiAgU3R1SUQ9YygxLDIsMyw0LDUpLA0KICBuYW1lPWMoIuWwj+aYjiIsIuWkp+mbhCIsIuiDluiZjiIsIuWwj+aWsCIsIuWkp+eZvSIpLA0KICBzY29yZT1jKDgwLDYwLDkwLDcwLDUwKQ0KICApDQpTdHVERiANCmBgYA0KDQpgYGB7cn0NCmFzLmNoYXJhY3RlcihTdHVERiRuYW1lKSAtPiBTdHVERiRuYW1lDQpgYGANCg0KYGBge3J9DQpTdHVERiA8LSBkYXRhLmZyYW1lKA0KICBTdHVJRD1jKDEsMiwzLDQsNSksDQogIG5hbWU9Yygi5bCP5piOIiwi5aSn6ZuEIiwi6IOW6JmOIiwi5bCP5pawIiwi5aSn55m9IiksDQogIHNjb3JlPWMoODAsNjAsOTAsNzAsNTApLA0KICBzdHJpbmdzQXNGYWN0b3JzID0gRg0KICApDQpTdHVERiANCmBgYA0KDQpgYGB7cn0NCm5hbWVzKFN0dURGKSANCmNvbG5hbWVzKFN0dURGKQ0KYGBgDQoNCmBgYHtyfQ0Kcm93bmFtZXMoU3R1REYpDQpgYGANCg0KYGBge3J9DQpTdHVERg0KU3R1REZbMSwyXQ0KYGBgDQoNCmBgYHtyfQ0KU3R1REZbMSwyXQ0KU3R1REZbLDJdDQpTdHVERlsxLF0NClN0dURGDQpTdHVERltjKDEsNCksXQ0KU3R1REZbYygxLDQpLGMoMiwzKV0NCmBgYA0KDQpgYGB7cn0NClN0dURGW2MoMSwyLDMpLF0NClN0dURGW2MoMTozKSxdDQpTdHVERltjKDE6Myw1KSxdDQpgYGANCg0KYGBge3J9DQpTdHVERltjKDEsNCksXQ0KYGBgDQoNCmBgYHtyfQ0KU3R1REZbLWMoMSw0KSxdDQpgYGANCg0KYGBge3J9DQpoZWFkKGNsYXNzU3VydmV5LDEwKQ0KYGBgDQoNCmBgYHtyfQ0KU3R1REYNCmBgYA0KDQpgYGB7cn0NClN0dURGWzEsMl0NCmBgYA0KDQpgYGB7cn0NClN0dURGW2MoVCxGLEYsRixGKSxjKEYsVCxGKV0NCmBgYA0KDQpgYGB7cn0NClN0dURGW2MoMSw0KSxdDQpTdHVERltjKFQsRixGLFQsRiksXQ0KYGBgDQoNCmBgYHtyfQ0KYTwtYyhULFQsRixGLFQsRixGKQ0Kc3VtKGEpDQpgYGANCg0KYGBge3J9DQpTdHVERg0KYGBgDQoNCmBgYHtyfQ0KKFN0dURGJHNjb3JlID49IDgwKQ0KKFN0dURGJG5hbWUgPT0gIuWwj+aWsCIpDQpgYGANCg0KYGBge3J9DQp3aGljaChTdHVERiRzY29yZT49ODApDQpgYGANCg0KYGBge3J9DQpTdHVERlt3aGljaChTdHVERiRzY29yZT49ODApLDJdDQpTdHVERltjKDEsMyksMl0NClN0dURGWyhTdHVERiRzY29yZT49ODApLDJdDQpTdHVERltjKFQsRixULEYsRiksMl0NClN0dURGW3doaWNoKFN0dURGJG5hbWUgPT0gIuWwj+aWsCIpLDNdDQpgYGANCg0KYGBge3J9DQphYSA8LSAoY2xhc3NTdXJ2ZXkk5oCn5YilID09ICLnlLciICkNCmJiIDwtIChjbGFzc1N1cnZleSTmnKzlrbjmnJ/lrbjliIbmlbggPiAyMCkNCmNjIDwtIChjbGFzc1N1cnZleSTmgKfliKUgPT0gIueUtyIgJiBjbGFzc1N1cnZleSTmnKzlrbjmnJ/lrbjliIbmlbggPiAyMCkNCmNiaW5kKGFhLGJiLGNjKQ0KYGBgDQoNCmBgYHtyfQ0KKGNsYXNzU3VydmV5JOaAp+WIpSA9PSAi55S3InwgY2xhc3NTdXJ2ZXkk5pys5a245pyf5a245YiG5pW4ID4gMjYpDQpgYGANCg0KYGBge3J9DQpjbGFzc1N1cnZleVsNCiAgKGNsYXNzU3VydmV5JOaAp+WIpSA9PSAi55S3IiAmIGNsYXNzU3VydmV5JOacrOWtuOacn+WtuOWIhuaVuCA+IDI2KSwgM10NCmBgYA0KDQpgYGB7cn0NCmFhYTwtYygzLDcsOSwxMCkNCmFhYVszXQ0KYGBgDQoNCmBgYHtyfQ0KU3R1REYNCmBgYA0KDQpgYGB7cn0NClN0dURGJFN0dUlEDQpTdHVERlssYygiU3R1SUQiKV0NClN0dURGJG5hbWUNClN0dURGWyxjKCJuYW1lIildDQogU3R1REZbLGMoIlN0dUlEIiwibmFtZSIpXQ0KICMjIOeEoeazleeUqCTkuIDmrKHlj5blhanlgIvlhYPntKANCiMgU3R1REYkYygiU3R1SUQiLCJuYW1lIikNCmBgYA0KDQpgYGB7cn0NClN0dURGW2MoMSw0KSxjKDIpXQ0KU3R1REZbLGMoMildW2MoMSw0KV0NCiBTdHVERlssYygyKV0tPmFhDQphYVtjKDEsNCldDQpgYGANCg0KYGBge3J9DQpTdHVERiRuYW1lW2MoMildDQpgYGANCg0KYGBge3J9DQpTdHVERlssYygxLDMpXVtjKDEsNCksXQ0KYGBg</div>
 
 
 
