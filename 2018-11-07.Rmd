@@ -8,26 +8,26 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-民國年月<-c("099/01","099/02","099/03")
+TWYM <- c("099/01", "099/02", "099/03")
 ```
 
 ```{r}
 library(stringr)
 library(lubridate)
-民國年月<-c("099/01","099/02","099/03")
+TWYM<-c("099/01","099/02","099/03")
 # 1
-str_c("1",民國年月,"/01")->民國年月
+str_c("1",TWYM,"/01")->TWYM
 # 2
-lubridate::ymd(民國年月) -> 民國年月
+lubridate::ymd(TWYM) -> TWYM
 # 3
-民國年月 + years(911)
+TWYM + years(911)
 ```
 
 ```{r}
-民國年月<-c("099/01","099/02","099/03")
+TWYM<-c("099/01","099/02","099/03")
 library(dplyr)
 # 1
-民國年月 %>% 
+TWYM %>% 
   str_c("1", . ,"/01") %>%
   ymd %>%
   { . + years(911) }
@@ -40,10 +40,11 @@ collegeData <- read_csv("https://quality.data.gov.tw/dq_download_csv.php?nid=623
 ```
 
 ```{r}
-collegeData$學校名稱 <-
-  as.factor(collegeData$學校名稱)
-collegeData$`日間∕進修別`<-
-  as.factor(collegeData$`日間∕進修別`)
+collegeData <- as.data.frame(collegeData)
+collegeData[,c(2)] <-
+  as.factor(collegeData[,c(2)])
+collegeData[,c(3)]<-
+  as.factor(collegeData[,c(3)])
 ```
 
 ```{r}
@@ -69,4 +70,72 @@ collegeData %>%
   學校代碼=as.factor(學校代碼),
   學校名稱=as.factor(學校名稱)
          ) -> collegeData2
+```
+
+# 舊寫法
+
+```{r}
+collegeData[,c(1)]<-as.factor(collegeData[,c(1)])
+collegeData[,c(2)]<-as.factor(collegeData[,c(2)])
+collegeData -> collegeData2
+```
+
+```{r}
+collegeData[,c(3)]<-as.factor(collegeData[,c(3)])
+collegeData$等級別<-as.factor(collegeData$等級別)
+collegeData$一年級男生<-as.numeric(collegeData$一年級男生)
+collegeData$一年級女生<-as.numeric(collegeData$一年級女生)
+collegeData -> collegeData2
+```
+
+# mutate寫法
+
+```{r}
+library(dplyr)
+mutate(collegeData,
+       `日間∕進修別`=as.factor(`日間∕進修別`),
+       等級別=as.factor(等級別),
+       一年級男生=as.numeric(一年級男生),
+       一年級女生=as.numeric(一年級女生)
+       ) ->
+  collegeData2
+```
+
+# pipe
+
+
+```{r}
+library(dplyr)
+collegeData %>%
+mutate(
+       `日間∕進修別`=as.factor(`日間∕進修別`),
+       等級別=as.factor(等級別),
+       一年級男生=as.numeric(一年級男生),
+       一年級女生=as.numeric(一年級女生)
+       ) ->
+  collegeData2
+```
+
+```{r}
+library(stringr)
+collegeData %>%
+  mutate(
+    一年級男生=str_replace(一年級男生,",",""),
+    一年級女生=str_replace(一年級女生,",","")
+  ) %>%
+  mutate(
+    一年級男生=as.numeric(一年級男生),
+    一年級女生=as.numeric(一年級女生)
+  ) -> collegeData3
+```
+
+```{r}
+library(stringr)
+collegeData %>%
+  mutate( # 將所有逗號拿掉
+    一年級男生=str_replace(一年級男生,",",""),
+    一年級女生=str_replace(一年級女生,",",""),
+    一年級男生=as.numeric(一年級男生),
+    一年級女生=as.numeric(一年級女生)
+  ) -> collegeData3
 ```
