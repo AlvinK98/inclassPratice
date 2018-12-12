@@ -13,3 +13,36 @@ library(readr)
 libraryData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/library100_102.csv")
 ```
 
+```{r}
+libraryData <- as.data.frame(libraryData)
+libraryData[6,]  %>%
+  as.factor %>%
+  levels -> strongeLocation
+```
+
+```{r}
+libraryData[6,] <-
+  as.factor(libraryData[6,])
+levels(libraryData[6,]) -> storageLocations
+```
+
+```{r}
+storageLocation_i <- storageLocations[i] 
+numericalIndexForSubsample<-which(libraryData[6,] ==storageLocation_i)
+subsample_i <- libraryData[numericalIndexForSubsample,]
+borrowCount_i <- nrow(subsample_i)
+```
+
+```{r}
+i<-2
+storageLocation_i <- storageLocations[i] 
+numericalIndexForSubsample<-which(libraryData[6,] ==storageLocation_i)
+subsample_i <- libraryData[numericalIndexForSubsample,]
+borrowCount_i <- nrow(subsample_i)
+```
+
+```{r}
+allBorrowCount <- vector("numeric",18)
+```
+
+
