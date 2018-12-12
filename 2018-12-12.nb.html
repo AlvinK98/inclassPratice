@@ -204,12 +204,13 @@ cols(
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeURhdGEgPC0gYXMuZGF0YS5mcmFtZShsaWJyYXJ5RGF0YSlcbmxpYnJhcnlEYXRhWzYsXSAgJT4lXG4gIGFzLmZhY3RvciAlPiVcbiAgbGV2ZWxzIC0+IHN0cm9uZ2VMb2NhdGlvblxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeURhdGEgPC0gYXMuZGF0YS5mcmFtZShsaWJyYXJ5RGF0YSlcbmxpYnJhcnlEYXRhJOabuOexjemkqOiXj+WcsCAgJT4lXG5gYGAifQ== -->
 <pre class="r"><code>libraryData &lt;- as.data.frame(libraryData)
-libraryData[6,]  %&gt;%
-  as.factor %&gt;%
-  levels -&gt; strongeLocation</code></pre>
+libraryData$書籍館藏地  %&gt;%</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IHVuZXhwZWN0ZWQgaW5wdXQgaW4gXCJsaWJyYXJ5RGF0YSRcXFwiXG4ifQ== -->
+<pre><code>Error: unexpected input in &quot;libraryData$\&quot;</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -236,13 +237,6 @@ libraryData[6,]  %&gt;%
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaTwtMlxuc3RvcmFnZUxvY2F0aW9uX2kgPC0gc3RvcmFnZUxvY2F0aW9uc1tpXSBcbm51bWVyaWNhbEluZGV4Rm9yU3Vic2FtcGxlPC13aGljaChsaWJyYXJ5RGF0YVs2LF0gPT1zdG9yYWdlTG9jYXRpb25faSlcbnN1YnNhbXBsZV9pIDwtIGxpYnJhcnlEYXRhW251bWVyaWNhbEluZGV4Rm9yU3Vic2FtcGxlLF1cbmJvcnJvd0NvdW50X2kgPC0gbnJvdyhzdWJzYW1wbGVfaSlcbmBgYCJ9 -->
-<pre class="r"><code>i&lt;-2
-storageLocation_i &lt;- storageLocations[i] 
-numericalIndexForSubsample&lt;-which(libraryData[6,] ==storageLocation_i)
-subsample_i &lt;- libraryData[numericalIndexForSubsample,]
-borrowCount_i &lt;- nrow(subsample_i)</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -253,8 +247,91 @@ borrowCount_i &lt;- nrow(subsample_i)</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><span class="math display">\[\sum_{i=1}^{10} i\]</span></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeURhdGEgJT4lXG4gIGdyb3VwX2J5KOWtuOmZoizlhaXlrbjlubQpICU+JVxuICBzdW1tYXJpc2UoXG4gICAgYm9ycm93Q291bnQ9bGVuZ3RoKOWtuOiZnylcbiAgKSAtPiByZXN1bHRBXG5yZXN1bHRBXG5gYGAifQ== -->
+<pre class="r"><code>libraryData %&gt;%
+  group_by(學院,入學年) %&gt;%
+  summarise(
+    borrowCount=length(學號)
+  ) -&gt; resultA
+resultA</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeURhdGEgJT4lXG4gIG11dGF0ZShcbiAgICBTdHVkZW50Q291cnNlPXN0cl9zdWIoKOWtuOiZnyw1LDYpXG4gICkgLT4gbGlicmFyeURhdGFcbmBgYCJ9 -->
+<pre class="r"><code>libraryData %&gt;%
+  mutate(
+    StudentCourse=str_sub((學號,5,6)
+  ) -&gt; libraryData</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYW5zPC0wXG5mb3IoaSBpbiAxOjEwKXtcbiAgbmV3QWRkZWQ8LWlcbiAgYW5zPC1hbnMrbmV3QWRkZWRcbn1cbmBgYCJ9 -->
+<pre class="r"><code>ans&lt;-0
+for(i in 1:10){
+  newAdded&lt;-i
+  ans&lt;-ans+newAdded
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeURhdGEgJT4lXG4gIGdyb3VwX2J5KOWtuOmZoizlhaXlrbjlubQpICU+JVxuICBzdW1tYXJpc2UoXG4gICAgYm9ycm93Q291bnQ9bGVuZ3RoKOWtuOiZnylcbiAgKSAlPiVcbiAgdW5ncm91cCAtPiByZXN1bHRCXG5yZXN1bHRCXG5gYGAifQ== -->
+<pre class="r"><code>libraryData %&gt;%
+  group_by(學院,入學年) %&gt;%
+  summarise(
+    borrowCount=length(學號)
+  ) %&gt;%
+  ungroup -&gt; resultB
+resultB</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeURhdGEgJT4lXG4gIGZpbHRlcijlhaXlrbjlubQ9PTEwMilcbmBgYCJ9 -->
+<pre class="r"><code>libraryData %&gt;%
+  filter(入學年==102)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeURhdGEgJT4lXG4gIG11dGF0ZShcbiAgICAgIOWAn+mWseaZgumWkz15bWRfaG1zKOWAn+mWseaZgumWkyx0ej1cIkFzaWEvVGFpcGVpXCIpXG4gICkgJT4lXG4gIGdyb3VwX2J5KOWtuOiZnykgJT4lXG4gIHN1bW1hcmlzZShcbiAgICDnrKzkuIDmrKHlgJ/mm7g9bWluKOWAn+mWseaZgumWkylcbiAgKSAlPiVcbiAgdW5ncm91cCAtPiByZXN1bHRDXG5yZXN1bHRDXG5gYGAifQ== -->
+<pre class="r"><code>libraryData %&gt;%
+  mutate(
+      借閱時間=ymd_hms(借閱時間,tz=&quot;Asia/Taipei&quot;)
+  ) %&gt;%
+  group_by(學號) %&gt;%
+  summarise(
+    第一次借書=min(借閱時間)
+  ) %&gt;%
+  ungroup -&gt; resultC
+resultC</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTgtMTItMTIiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0NCmtuaXRyOjpvcHRzX2NodW5rJHNldChlY2hvID0gVFJVRSkNCmxpYnJhcnkocmVhZHIpOyBsaWJyYXJ5KGRwbHlyKTsgbGlicmFyeShzdHJpbmdyKTsgbGlicmFyeShsdWJyaWRhdGUpDQpgYGANCg0KYGBge3J9DQpsaWJyYXJ5KHJlYWRyKQ0KbGlicmFyeURhdGEgPC0gcmVhZF9jc3YoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS90cGVtYXJ0aW4vZ2l0aHViLWRhdGEvbWFzdGVyL2xpYnJhcnkxMDBfMTAyLmNzdiIpDQpgYGANCg0KYGBge3J9DQpsaWJyYXJ5RGF0YSA8LSBhcy5kYXRhLmZyYW1lKGxpYnJhcnlEYXRhKQ0KbGlicmFyeURhdGFbNixdICAlPiUNCiAgYXMuZmFjdG9yICU+JQ0KICBsZXZlbHMgLT4gc3Ryb25nZUxvY2F0aW9uDQpgYGANCg0KYGBge3J9DQpsaWJyYXJ5RGF0YVs2LF0gPC0NCiAgYXMuZmFjdG9yKGxpYnJhcnlEYXRhWzYsXSkNCmxldmVscyhsaWJyYXJ5RGF0YVs2LF0pIC0+IHN0b3JhZ2VMb2NhdGlvbnMNCmBgYA0KDQpgYGB7cn0NCnN0b3JhZ2VMb2NhdGlvbl9pIDwtIHN0b3JhZ2VMb2NhdGlvbnNbaV0gDQpudW1lcmljYWxJbmRleEZvclN1YnNhbXBsZTwtd2hpY2gobGlicmFyeURhdGFbNixdID09c3RvcmFnZUxvY2F0aW9uX2kpDQpzdWJzYW1wbGVfaSA8LSBsaWJyYXJ5RGF0YVtudW1lcmljYWxJbmRleEZvclN1YnNhbXBsZSxdDQpib3Jyb3dDb3VudF9pIDwtIG5yb3coc3Vic2FtcGxlX2kpDQpgYGANCg0KYGBge3J9DQppPC0yDQpzdG9yYWdlTG9jYXRpb25faSA8LSBzdG9yYWdlTG9jYXRpb25zW2ldIA0KbnVtZXJpY2FsSW5kZXhGb3JTdWJzYW1wbGU8LXdoaWNoKGxpYnJhcnlEYXRhWzYsXSA9PXN0b3JhZ2VMb2NhdGlvbl9pKQ0Kc3Vic2FtcGxlX2kgPC0gbGlicmFyeURhdGFbbnVtZXJpY2FsSW5kZXhGb3JTdWJzYW1wbGUsXQ0KYm9ycm93Q291bnRfaSA8LSBucm93KHN1YnNhbXBsZV9pKQ0KYGBgDQoNCmBgYHtyfQ0KYWxsQm9ycm93Q291bnQgPC0gdmVjdG9yKCJudW1lcmljIiwxOCkNCmBgYA0KDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTgtMTItMTIiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0NCmtuaXRyOjpvcHRzX2NodW5rJHNldChlY2hvID0gVFJVRSkNCmxpYnJhcnkocmVhZHIpOyBsaWJyYXJ5KGRwbHlyKTsgbGlicmFyeShzdHJpbmdyKTsgbGlicmFyeShsdWJyaWRhdGUpDQpgYGANCg0KYGBge3J9DQpsaWJyYXJ5KHJlYWRyKQ0KbGlicmFyeURhdGEgPC0gcmVhZF9jc3YoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS90cGVtYXJ0aW4vZ2l0aHViLWRhdGEvbWFzdGVyL2xpYnJhcnkxMDBfMTAyLmNzdiIpDQpgYGANCg0KYGBge3J9DQpsaWJyYXJ5RGF0YSA8LSBhcy5kYXRhLmZyYW1lKGxpYnJhcnlEYXRhKQ0KbGlicmFyeURhdGEk5pu457GN6aSo6JeP5ZywICAlPiUNCiAgYXMuZmFjdG9yICU+JQ0KICBsZXZlbHMgLT4gc3Ryb25nZUxvY2F0aW9uDQpgYGANCg0KYGBge3J9DQpsaWJyYXJ5RGF0YVs2LF0gPC0NCiAgYXMuZmFjdG9yKGxpYnJhcnlEYXRhJOabuOexjemkqOiXj+WcsCApDQpsZXZlbHMobGlicmFyeURhdGEk5pu457GN6aSo6JeP5ZywICkgLT4gc3RvcmFnZUxvY2F0aW9ucw0KYGBgDQoNCmBgYHtyfQ0Kc3RvcmFnZUxvY2F0aW9uX2kgPC0gc3RvcmFnZUxvY2F0aW9uc1tpXSANCm51bWVyaWNhbEluZGV4Rm9yU3Vic2FtcGxlPC13aGljaChsaWJyYXJ5RGF0YSTmm7jnsY3ppKjol4/lnLAgPT1zdG9yYWdlTG9jYXRpb25faSkNCnN1YnNhbXBsZV9pIDwtIGxpYnJhcnlEYXRhW251bWVyaWNhbEluZGV4Rm9yU3Vic2FtcGxlLF0NCmJvcnJvd0NvdW50X2kgPC0gbnJvdyhzdWJzYW1wbGVfaSkNCmBgYA0KDQpgYGB7cn0NCmk8LTINCnN0b3JhZ2VMb2NhdGlvbl9pIDwtIHN0b3JhZ2VMb2NhdGlvbnNbaV0gDQpudW1lcmljYWxJbmRleEZvclN1YnNhbXBsZTwtd2hpY2gobGlicmFyeURhdGEk5pu457GN6aSo6JeP5ZywID09c3RvcmFnZUxvY2F0aW9uX2kpDQpzdWJzYW1wbGVfaSA8LSBsaWJyYXJ5RGF0YVtudW1lcmljYWxJbmRleEZvclN1YnNhbXBsZSxdDQpib3Jyb3dDb3VudF9pIDwtIG5yb3coc3Vic2FtcGxlX2kpDQpgYGANCg0KYGBge3J9DQphbGxCb3Jyb3dDb3VudCA8LSB2ZWN0b3IoIm51bWVyaWMiLDE4KQ0KYGBgDQoNCmBgYHtyfQ0KZm9yKGkgaW4gYygxOjE4KSl7DQogIHN0b3JhZ2VMb2NhdGlvbl9pIDwtIHN0b3JhZ2VMb2NhdGlvbnNbaV0gDQogIG51bWVyaWNhbEluZGV4Rm9yU3Vic2FtcGxlPC13aGljaChsaWJyYXJ5RGF0YSTmm7jnsY3ppKjol4/lnLAgPT0gc3RvcmFnZUxvY2F0aW9uX2kpDQogIHN1YnNhbXBsZV9pIDwtIGxpYnJhcnlEYXRhW251bWVyaWNhbEluZGV4Rm9yU3Vic2FtcGxlLF0NCiAgYm9ycm93Q291bnRfaSA8LSBucm93KHN1YnNhbXBsZV9pKQ0KICBhbGxCb3Jyb3dDb3VudFtbaV1dPC1ib3Jyb3dDb3VudF9pICANCn0NCg0KYGBgDQoNCmBgYHtyfQ0KbmFtZXMoYWxsQm9ycm93Q291bnQpIDwtIHN0b3JhZ2VMb2NhdGlvbnMNCmBgYA0KDQpgYGB7cn0NCmxpYnJhcnlEYXRhJOWtuOmZoiAlPiUgYXMuZmFjdG9yICU+JSBsZXZlbHMgLT4gY29sbGVnZQ0KDQpjb2xsZWdlQm9ycm93Q291bnQgPC0gdmVjdG9yKCJudW1lcmljIixsZW5ndGgoY29sbGVnZSkpDQpmb3IoaSBpbiBzZXFfYWxvbmcoY29sbGVnZSkpew0KDQpjb2xsZWdlX2kgPC0gY29sbGVnZVtpXQ0KDQpudW1lcmljYWxJbmRleEZvclN1YnNhbXBsZTwtd2hpY2gobGlicmFyeURhdGEk5a246ZmiID09IGNvbGxlZ2VfaSkNCmNvbGxlZ2VzdWJzYW1wbGVfaSA8LSBsaWJyYXJ5RGF0YVtudW1lcmljYWxJbmRleEZvclN1YnNhbXBsZSxdDQoNCmNvbGxlZ2VCb3Jyb3dDb3VudF9pIDwtIG5yb3coY29sbGVnZXN1YnNhbXBsZV9pKQ0KDQpjb2xsZWdlQm9ycm93Q291bnRbW2ldXTwtY29sbGVnZUJvcnJvd0NvdW50X2kgDQp9DQpgYGANCg0KYGBge3J9DQpsaWJyYXJ5RGF0YSTlrbjomZ8gJT4lIGFzLmZhY3RvciAlPiUgbGV2ZWxzIC0+IHN0dWRlbnQNCmxpYnJhcnlEYXRhJOWtuOiZnyAlPiUgdW5pcXVlIC0+IHN0dWRlbnQNCg0Kc3R1ZGVudEJvcnJvdyA8LSB2ZWN0b3IoIm51bWVyaWMiLCBsZW5ndGgoc3R1ZGVudCkpDQpmb3IoaSBpbiBjKDE6bGVuZ3RoKHN0dWRlbnQpKSl7DQoNCnN0dWRlbnRfaSA8LSBzdHVkZW50W2ldDQoJDQpudW1lcmljYWxJbmRleCA8LSB3aGljaChsaWJyYXJ5RGF0YSTlrbjomZ8gPT0gc3R1ZGVudF9pKQ0Kc3R1ZGVudFN1YnNhbXBsZV9pIDwtIGxpYnJhcnlEYXRhW251bWVyaWNhbEluZGV4LF0NCgkNCnN0dWRlbnRCb3Jyb3dfaSA8LSBucm93KHN0dWRlbnRTdWJzYW1wbGVfaSkNCgkNCnN0dWRlbnRCb3Jyb3dbW2ldXSA8LSBzdHVkZW50Qm9ycm93X2kNCn0NCmBgYA0KDQokJFxzdW1fe2k9MX1eezEwfSBpJCQNCg0KYGBge3J9DQpsaWJyYXJ5RGF0YSAlPiUNCiAgZ3JvdXBfYnko5a246ZmiLOWFpeWtuOW5tCkgJT4lDQogIHN1bW1hcmlzZSgNCiAgICBib3Jyb3dDb3VudD1sZW5ndGgo5a246JmfKQ0KICApIC0+IHJlc3VsdEENCnJlc3VsdEENCmBgYA0KYGBge3J9DQpsaWJyYXJ5RGF0YSAlPiUNCiAgbXV0YXRlKA0KICAgIFN0dWRlbnRDb3Vyc2U9c3RyX3N1Yigo5a246JmfLDUsNikNCiAgKSAtPiBsaWJyYXJ5RGF0YQ0KYGBgDQoNCmBgYHtyfQ0KYW5zPC0wDQpmb3IoaSBpbiAxOjEwKXsNCiAgbmV3QWRkZWQ8LWkNCiAgYW5zPC1hbnMrbmV3QWRkZWQNCn0NCmBgYA0KDQpgYGB7cn0NCmxpYnJhcnlEYXRhICU+JQ0KICBncm91cF9ieSjlrbjpmaIs5YWl5a245bm0KSAlPiUNCiAgc3VtbWFyaXNlKA0KICAgIGJvcnJvd0NvdW50PWxlbmd0aCjlrbjomZ8pDQogICkgJT4lDQogIHVuZ3JvdXAgLT4gcmVzdWx0Qg0KcmVzdWx0Qg0KYGBgDQoNCmBgYHtyfQ0KbGlicmFyeURhdGEgJT4lDQogIGZpbHRlcijlhaXlrbjlubQ9PTEwMikNCmBgYA0KDQpgYGB7cn0NCmxpYnJhcnlEYXRhICU+JQ0KICBtdXRhdGUoDQogICAgICDlgJ/plrHmmYLplpM9eW1kX2htcyjlgJ/plrHmmYLplpMsdHo9IkFzaWEvVGFpcGVpIikNCiAgKSAlPiUNCiAgZ3JvdXBfYnko5a246JmfKSAlPiUNCiAgc3VtbWFyaXNlKA0KICAgIOesrOS4gOasoeWAn+abuD1taW4o5YCf6Zax5pmC6ZaTKQ0KICApICU+JQ0KICB1bmdyb3VwIC0+IHJlc3VsdEMNCnJlc3VsdEMNCmBgYA==</div>
 
 
 

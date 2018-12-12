@@ -15,20 +15,20 @@ libraryData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data
 
 ```{r}
 libraryData <- as.data.frame(libraryData)
-libraryData[6,]  %>%
+libraryData$書籍館藏地  %>%
   as.factor %>%
   levels -> strongeLocation
 ```
 
 ```{r}
 libraryData[6,] <-
-  as.factor(libraryData[6,])
-levels(libraryData[6,]) -> storageLocations
+  as.factor(libraryData$書籍館藏地 )
+levels(libraryData$書籍館藏地 ) -> storageLocations
 ```
 
 ```{r}
 storageLocation_i <- storageLocations[i] 
-numericalIndexForSubsample<-which(libraryData[6,] ==storageLocation_i)
+numericalIndexForSubsample<-which(libraryData$書籍館藏地 ==storageLocation_i)
 subsample_i <- libraryData[numericalIndexForSubsample,]
 borrowCount_i <- nrow(subsample_i)
 ```
@@ -36,7 +36,7 @@ borrowCount_i <- nrow(subsample_i)
 ```{r}
 i<-2
 storageLocation_i <- storageLocations[i] 
-numericalIndexForSubsample<-which(libraryData[6,] ==storageLocation_i)
+numericalIndexForSubsample<-which(libraryData$書籍館藏地 ==storageLocation_i)
 subsample_i <- libraryData[numericalIndexForSubsample,]
 borrowCount_i <- nrow(subsample_i)
 ```
@@ -45,4 +45,105 @@ borrowCount_i <- nrow(subsample_i)
 allBorrowCount <- vector("numeric",18)
 ```
 
+```{r}
+for(i in c(1:18)){
+  storageLocation_i <- storageLocations[i] 
+  numericalIndexForSubsample<-which(libraryData$書籍館藏地 == storageLocation_i)
+  subsample_i <- libraryData[numericalIndexForSubsample,]
+  borrowCount_i <- nrow(subsample_i)
+  allBorrowCount[[i]]<-borrowCount_i  
+}
 
+```
+
+```{r}
+names(allBorrowCount) <- storageLocations
+```
+
+```{r}
+libraryData$學院 %>% as.factor %>% levels -> college
+
+collegeBorrowCount <- vector("numeric",length(college))
+for(i in seq_along(college)){
+
+college_i <- college[i]
+
+numericalIndexForSubsample<-which(libraryData$學院 == college_i)
+collegesubsample_i <- libraryData[numericalIndexForSubsample,]
+
+collegeBorrowCount_i <- nrow(collegesubsample_i)
+
+collegeBorrowCount[[i]]<-collegeBorrowCount_i 
+}
+```
+
+```{r}
+libraryData$學號 %>% as.factor %>% levels -> student
+libraryData$學號 %>% unique -> student
+
+studentBorrow <- vector("numeric", length(student))
+for(i in c(1:length(student))){
+
+student_i <- student[i]
+	
+numericalIndex <- which(libraryData$學號 == student_i)
+studentSubsample_i <- libraryData[numericalIndex,]
+	
+studentBorrow_i <- nrow(studentSubsample_i)
+	
+studentBorrow[[i]] <- studentBorrow_i
+}
+```
+
+$$\sum_{i=1}^{10} i$$
+
+```{r}
+libraryData %>%
+  group_by(學院,入學年) %>%
+  summarise(
+    borrowCount=length(學號)
+  ) -> resultA
+resultA
+```
+```{r}
+libraryData %>%
+  mutate(
+    StudentCourse=str_sub((學號,5,6)
+  ) -> libraryData
+```
+
+```{r}
+ans<-0
+for(i in 1:10){
+  newAdded<-i
+  ans<-ans+newAdded
+}
+```
+
+```{r}
+libraryData %>%
+  group_by(學院,入學年) %>%
+  summarise(
+    borrowCount=length(學號)
+  ) %>%
+  ungroup -> resultB
+resultB
+```
+
+```{r}
+libraryData %>%
+  filter(入學年==102)
+```
+
+```{r}
+libraryData %>%
+  mutate(
+      借閱時間=ymd_hms(借閱時間,tz="Asia/Taipei")
+  ) %>%
+  group_by(學號) %>%
+  summarise(
+    第一次借書=min(借閱時間)
+  ) %>%
+  ungroup -> resultC
+resultC
+```
