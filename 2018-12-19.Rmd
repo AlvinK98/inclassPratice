@@ -1,0 +1,9 @@
+---
+title: "2018-12-19"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr); library(dplyr); library(stringr); library(lubridate)
+```
